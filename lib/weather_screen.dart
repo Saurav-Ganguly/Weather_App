@@ -96,12 +96,26 @@ class WeatherScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    ForcastCard(),
-                    ForcastCard(),
-                    ForcastCard(),
-                    ForcastCard(),
-                    ForcastCard(),
-                    ForcastCard(),
+                    ForcastCard(
+                      time: '3:00',
+                      forcastIcon: Icons.cloud,
+                      temp: '300.67° K',
+                    ),
+                    ForcastCard(
+                      time: '3:00',
+                      forcastIcon: Icons.cloud,
+                      temp: '300.67° K',
+                    ),
+                    ForcastCard(
+                      time: '3:00',
+                      forcastIcon: Icons.cloud,
+                      temp: '300.67° K',
+                    ),
+                    ForcastCard(
+                      time: '3:00',
+                      forcastIcon: Icons.cloud,
+                      temp: '300.67° K',
+                    ),
                   ],
                 ),
               ),
@@ -117,7 +131,7 @@ class WeatherScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

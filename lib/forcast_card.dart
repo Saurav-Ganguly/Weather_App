@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ForcastCard extends StatelessWidget {
+  final String time;
+  final IconData forcastIcon;
+  final String temp;
   const ForcastCard({
+    required this.time,
+    required this.forcastIcon,
+    required this.temp,
     super.key,
   });
 
@@ -15,24 +21,24 @@ class ForcastCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         padding: const EdgeInsets.all(8.0),
-        child: const Column(
+        child: Column(
           children: [
             Text(
-              '03:00',
-              style: TextStyle(
+              time,
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 8),
             Icon(
-              Icons.cloud,
+              forcastIcon,
               size: 32,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
-              '300.67° K',
-              style: TextStyle(
+              temp,
+              style: const TextStyle(
                 fontSize: 16,
               ),
             ),
