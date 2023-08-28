@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'package:weather_app/additional_info_card.dart';
 import 'package:weather_app/forcast_card.dart';
 import 'package:weather_app/secrets.dart';
@@ -187,8 +188,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         itemCount: 5,
                         itemBuilder: (context, index) {
                           final hourlyForecastData = data['list'][index + 1];
+                          final time =
+                              DateTime.parse(hourlyForecastData['dt_txt']);
                           return ForcastCard(
-                              time: hourlyForecastData['dt'].toString(),
+                              time: DateFormat.j().format(time),
                               forcastIcon: getCurrentSkyIcon(
                                   hourlyForecastData['weather'][0]['main']),
                               temp:
