@@ -48,7 +48,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {});
+            },
             icon: const Icon(
               Icons.refresh,
             ),

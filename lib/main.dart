@@ -21,3 +21,9 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+//layout principals
+//  CONSTRAINTS GO DOWN - boundries
+//  SIZES GO UP - widget tries to expand all the area
+//  PARENTS SETS POSITION - arranging its children
