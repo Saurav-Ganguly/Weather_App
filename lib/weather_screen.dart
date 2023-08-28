@@ -87,7 +87,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           final windSpeed = currentWeatherData['wind']['speed'].toString();
           final pressure = currentWeatherData['main']['pressure'].toString();
 
-          IconData getCurrentSkyIcon(currentSky) {
+          IconData getCurrentSkyIcon(String currentSky) {
             if (currentSky == 'Clouds') {
               return Icons.cloud;
             }
@@ -152,7 +152,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     height: 20,
                   ),
                   const Text(
-                    'Weather Forecast',
+                    'Hourly Forecast',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -162,32 +162,38 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     height: 14,
                   ),
                   //Weather Cards
-                  const SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        ForcastCard(
-                          time: '3:00',
-                          forcastIcon: Icons.cloud,
-                          temp: '300.67° K',
-                        ),
-                        ForcastCard(
-                          time: '3:00',
-                          forcastIcon: Icons.cloud,
-                          temp: '300.67° K',
-                        ),
-                        ForcastCard(
-                          time: '3:00',
-                          forcastIcon: Icons.cloud,
-                          temp: '300.67° K',
-                        ),
-                        ForcastCard(
-                          time: '3:00',
-                          forcastIcon: Icons.cloud,
-                          temp: '300.67° K',
-                        ),
-                      ],
-                    ),
+                  // SingleChildScrollView(
+                  //   scrollDirection: Axis.horizontal,
+                  //   child: Row(
+                  //     children: [
+                  //       //for loop is fine - but it creates all the widgets on
+                  //       //the go - causing performance lags
+                  //       //better to use ListViewBuilder
+                  //       //for (int i = 1; i <= 5; i++)
+                  //         ForcastCard(
+                  //           time: data['list'][i]['dt'].toString(),
+                  //           forcastIcon: getCurrentSkyIcon(
+                  //               data['list'][i]['weather'][0]['main']),
+                  //           temp:
+                  //               '${data['list'][i]['main']['temp'].toString()}° C',
+                  //         ),
+                  //     ],
+                  //   ),
+                  // ),
+                  SizedBox(
+                    height: 140,
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 5,
+                        itemBuilder: (context, index) {
+                          final hourlyForecastData = data['list'][index + 1];
+                          return ForcastCard(
+                              time: hourlyForecastData['dt'].toString(),
+                              forcastIcon: getCurrentSkyIcon(
+                                  hourlyForecastData['weather'][0]['main']),
+                              temp:
+                                  '${hourlyForecastData['main']['temp'].toString()}° C');
+                        }),
                   ),
                   const SizedBox(
                     height: 14,

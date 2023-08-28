@@ -25,6 +25,8 @@ class ForcastCard extends StatelessWidget {
           children: [
             Text(
               time,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
